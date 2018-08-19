@@ -4,14 +4,14 @@ import { Hero } from './hero';
 @Component({
   selector: 'app-displaying-data',
   template: `
-    <h1>{{title}}</h1>
-    <h2>My favorite hero is: {{myHero.name}}</h2>
-    <p>Heroes:</p>
-    <ul>
-      <li *ngFor="let hero of heroes">
-        {{ hero.name }}
-      </li>
-    </ul>
+    <nz-divider nzText="显示数据" nzOrientation="left"></nz-divider>
+    <h3>{{title}}</h3>
+    <h4>My favorite hero is: {{myHero.name}}</h4>
+    <nz-list [nzDataSource]="heroes" nzBordered
+        [nzHeader]="'Heroes'"
+        [nzRenderItem]="item">
+    <ng-template #item let-item><nz-list-item [nzContent]="item.name"></nz-list-item></ng-template>
+    </nz-list>
     <p *ngIf="heroes.length > 3">There are many heroes!</p>
   `,
   styleUrls: ['./displaying-data.component.css']
